@@ -1,0 +1,74 @@
+@keyframes myfirst
+{
+from {background: red;}
+to {background: yellow;}
+}
+
+/*@-moz-keyframes myfirst  Firefox
+{
+from {background: red;}
+to {background: yellow;}
+}
+
+@-webkit-keyframes myfirst  Safari 和 Chrome
+{
+from {background: red;}
+to {background: yellow;}
+}
+
+@-o-keyframes myfirst  Opera
+{
+from {background: red;}
+to {background: yellow;}
+}*/
+.xxx
+{
+width: 100px;
+height: 100px;
+animation: myfirst 5s;
+animation-iteration-count: infinite;
+//-moz-animation: myfirst 5s;	/* Firefox */
+//-moz-animation-iteration-count: infinite;
+//-webkit-animation: myfirst 5s;	/* Safari 和 Chrome */
+//-webkit-animation-iteration-count: infinite;
+//-o-animation: myfirst 5s;	/* Opera */
+//-o-animation-iteration-count: infinite;
+}
+
+.at{
+  display: flex;
+}
+
+.small{
+  background: url(../images/small.png);
+  width: 15px;
+  height: 15px;
+}
+.big{
+  background: url(../images/big.png);
+  width: 20px;
+  height: 20px;
+}
+.test{
+  background: url(../images/logo_60x3.png);
+  width: 180px;
+  height: 180px;
+}
+.test1{
+  background: url(../images/bg_launch_portrait_4.7.png);
+  width: 750px;
+  height: 1344px;
+}
+
+
+@font-face {
+	font-family: 'Conv_ALBAS___';
+	src: url(../fonts/ALBAS___.eot);
+	src: local('☺'), url(../fonts/ALBAS___.woff) format('woff'), url(../fonts/ALBAS___.ttf) format('truetype'), url(../fonts/ALBAS___.svg) format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{
+  font-family:'Conv_ALBAS___';
+}
