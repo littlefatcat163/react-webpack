@@ -1,7 +1,11 @@
 import React from "react";
 
+const bar = Symbol("bar");
+const snaf = Symbol("snaf");
+
 export default class TestES6 extends React.Component {
   num = 1;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +34,7 @@ export default class TestES6 extends React.Component {
 
     this.setState({state_1 : "xxxx"});
     this.nextClick({first : "_first", second : "_second"});
-  }
+  };
 
   click2(e) {
     let map = new Map();
@@ -47,6 +51,15 @@ export default class TestES6 extends React.Component {
     console.log(first);
     console.log(second);
     console.log("-> 解构引用end -");
+  }
+
+  publicMethod(baz) {
+    return this[bar](baz);
+  }
+
+  //私有方法
+  [bar](baz) {
+    return this[snaf] = baz;
   }
 }
 

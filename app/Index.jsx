@@ -2,8 +2,16 @@ import React from "react";
 import { Link } from "react-router";
 import TestES6 from "./TestES6.jsx";
 import Test1 from "./Test1.jsx";
+import BaseComponent from "./BaseComponent.jsx";
 
 export default class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      test1 : <Test1 ref="c" state_1="state_1_test1_" className="prop_className_test1_" other="prop_other_test1_"/>,
+      test2 : <BaseComponent ref="b"/>,
+    }
+  }
   render() {
       return (
         <div>
@@ -16,6 +24,13 @@ export default class Index extends React.Component {
           <Test1 ref="test1" state_1="state_1_test1" className="prop_className_test1" other="prop_other_test1"/>
           <br/>
           <button onClick={e=>this.ttt(e)}>index btn</button>
+          <hr/>
+          {this.state.test1}
+          <button onClick={e=>this.delNew(e)}>delete state test1</button>
+          <hr/>
+          <hr/>
+          {this.state.test2}
+          <button onClick={e=>this.testNew(e)}>testNew</button>
         </div>
       );
   }
@@ -23,5 +38,16 @@ export default class Index extends React.Component {
   ttt(e) {
     this.refs.testes6.click1();
     this.refs.test1.click2();
+    console.log(this.refs.test1.publicMethod("xxxxxx"));
+  }
+
+  delNew(e) {
+    this.refs.c.newSetState();
+    this.setState({test1 : null});
+  }
+
+  testNew(e) {
+    this.refs.b.timeout();
+    this.setState({test2 : null});
   }
 }
