@@ -96,6 +96,9 @@ module.exports = {
         compress: {
             warnings: false
         },
+        // mangle: {
+        //     except:['$super','$','exports','require']
+        // }
     }),
     new ExtractTextPlugin("[name].min.css"),
     new HtmlWebpackPlugin({

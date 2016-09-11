@@ -1,28 +1,48 @@
 import React from "react";
-import BaseReactComponent from "./BaseReactComponent.jsx";
 
-export default class BaseComponent extends BaseReactComponent {
+const __enable = Symbol("__enable");
+
+export default class BaseComponent extends React.Component {
+
+  // _bind(...methods) {
+  //   methods.forEach((method) => {
+  //     this[method] = this[method].bind(this);
+  //   });
+  // }
+
   constructor(props) {
     super(props);
-    this.state = {a : 1}
+    this[__enable] = true;
   }
 
-  render() {
-    return (
-      <div>
-        <h1> I am BaseComponent </h1>
-        {this.state.a}
-      </div>
-    )
+  componentWillUnmount() {
+    this[__enable] = false;
   }
 
-  test() {
-    let _state = Object.assign({}, this.state);
-    _state.a++;
-    super.__setState(_state);
+  __setState(obj) {
+    if(this[__enable] && obj) this.setState(obj);
   }
 
-  timeout() {
-    setTimeout(()=>super.__setState({a:-1}), 1000);
-  }
 }
+
+// export var BaseComponent = ComposedComponent => class extends React.Component {
+//
+//     displayName = "BaseComponent";
+//
+//     constructor(props) {
+//         super(props);
+//         this[__enable] = true;
+//     }
+//
+//     componentWillUnmount() {
+//       this[__enable] = false;
+//     }
+//
+//     __setState(obj) {
+//       if(this[__enable] && obj) this.setState(obj);
+//     }
+//
+//     render() {
+//         return <ComposedComponent {...this.props} {...this.state} />;
+//     }
+// }
