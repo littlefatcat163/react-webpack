@@ -4,6 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 //var CopyWebpackPlugin = require('copy-webpack-plugin');
 var autoprefixer = require('autoprefixer');
+//var es3ifyPlugin = require('es3ify-webpack-plugin');
 
 module.exports = {
   devServer: {
@@ -56,8 +57,13 @@ module.exports = {
         loader : "babel",
         query: {
             presets: ['es2015', 'stage-0', 'react']
-        }
+        },
+        plugins: ["transform-runtime"]//["transform-es3-property-literals", "transform-es3-member-expression-literals"]
       },
+      // {
+      //   test : /\.js[x]?$/,
+      //   loader : "es3ify",
+      // },
       {
         test : /\.css$/,
         //loader : "style!css"
@@ -84,6 +90,7 @@ module.exports = {
   },
   postcss : [autoprefixer({browsers:["last 3 version", "Firefox >= 15", "IE >= 10", "Opera >= 12"]})],//{browsers:['last 2 versions']}
   plugins : [
+    //new es3ifyPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
     new ExtractTextPlugin("[name].css"),
     new HtmlWebpackPlugin({

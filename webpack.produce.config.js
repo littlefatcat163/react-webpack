@@ -4,6 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var autoprefixer = require('autoprefixer');
+var es3ifyPlugin = require('es3ify-webpack-plugin');
 
 module.exports = {
   // devServer: {
@@ -56,8 +57,19 @@ module.exports = {
         loader : "babel",
         query: {
             presets: ['es2015', 'stage-0', 'react']
-        }
+        },
+        //plugins: ["transform-runtime"]
       },
+      // {
+      //   loader : "babel",
+      //   exclude: /node_modules/,
+      //   query: {
+      //     plugins: [
+      //       "transform-runtime"
+      //     ],
+      //     presets: ['es2015', 'stage-0']
+      //   }
+      // },
       {
         test : /\.css$/,
         //loader : "style!css"
@@ -86,6 +98,7 @@ module.exports = {
   },
   postcss : [autoprefixer({browsers:["last 3 version", "Firefox >= 15", "IE >= 10", "Opera >= 12"]})],//{browsers:['last 2 versions']}
   plugins : [
+    //new es3ifyPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
          NODE_ENV: JSON.stringify("production")
@@ -95,10 +108,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
         compress: {
             warnings: false
-        },
-        // mangle: {
-        //     except:['$super','$','exports','require']
-        // }
+        }
     }),
     new ExtractTextPlugin("[name].min.css"),
     new HtmlWebpackPlugin({
