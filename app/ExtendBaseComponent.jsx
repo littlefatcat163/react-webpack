@@ -18,6 +18,13 @@ export default class ExtendBaseComponent extends BaseComponent {
     )
   }
 
+  componentDidMount() {
+    let _state = Object.assign({}, this.state);
+    console.log(_state);
+    _state.a++;
+    super.__setState(_state);
+  }
+
   test() {
     let _state = Object.assign({}, this.state);
     _state.a++;
