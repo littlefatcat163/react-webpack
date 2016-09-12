@@ -16,6 +16,7 @@ export default class Index extends React.Component {
       return (
         <div>
           <h1>我是 Index </h1>
+          <div className="xxx"></div>
           <Link to="/first" activeStyle={{color : "red"}}>to first</Link>
           <br />
           <Link to="second" activeStyle={{color : "bule"}}>to second</Link>

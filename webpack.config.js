@@ -31,6 +31,8 @@ module.exports = {
   entry : {
     bundle : path.resolve(__dirname, "app/main.js"),
     xxx : path.resolve(__dirname, "app/xxx.js"),
+    //es5shim : path.resolve(__dirname, "app/es5-shim.min.js"),
+    //es5sham : path.resolve(__dirname, "app/es5-sham.min.js"),
     vendors : ["react", "react-dom", "jquery", "react-router"]
   },
   output : {
@@ -58,11 +60,11 @@ module.exports = {
         query: {
             presets: ['es2015', 'stage-0', 'react']
         },
-        plugins: ["transform-runtime"]//["transform-es3-property-literals", "transform-es3-member-expression-literals"]
+        plugins: ["transform-runtime"/*, "transform-es3-property-literals", "transform-es3-member-expression-literals", ["transform-es2015-classes", { "loose": true }], "transform-proto-to-assign"*/]
       },
       // {
       //   test : /\.js[x]?$/,
-      //   loader : "es3ify",
+      //   loaders : ["es3ify"],
       // },
       {
         test : /\.css$/,
