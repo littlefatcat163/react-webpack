@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import TestES6 from "./TestES6.jsx";
 import Test1 from "./Test1.jsx";
 import ExtendBaseComponent from "./ExtendBaseComponent.jsx";
+import PromiseTest from "./PromiseTest.jsx";
 
 export default class Index extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export default class Index extends React.Component {
           {this.state.test2}
           <button onClick={e=>this.testNew(e)}>testNew</button>
           <hr/>
+          <PromiseTest />
         </div>
       );
   }
