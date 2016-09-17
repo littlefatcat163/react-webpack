@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import 'babel-polyfill';//浏览器兼容 ie >= 10
+import 'babel-polyfill';//浏览器兼容 ie >= 9
 //require("babel-polyfill");
 //import TestCSS from "./TestCSS.jsx";
 import "./testcss.scss";
